@@ -1,5 +1,5 @@
 // Array of special characters to be included in password
-var specialCharacters = [
+var special = [
   "@",
   "%",
   "+",
@@ -25,9 +25,9 @@ var specialCharacters = [
   ".",
 ];
 // Array of numeric characters to be included in password
-var numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 // Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
+var lower = [
   "a",
   "b",
   "c",
@@ -56,7 +56,7 @@ var lowerCasedCharacters = [
   "z",
 ];
 // Array of uppercase characters to be included in password
-var upperCasedCharacters = [
+var upper = [
   "A",
   "B",
   "C",
@@ -85,7 +85,7 @@ var upperCasedCharacters = [
   "Z",
 ];
 // Function to prompt user for password options
-function getPasswordOptions() {
+function passwordOptions() {
   // Variable to store length of password from user input
   var length = parseInt(
     prompt("How many characters would you like your password to contain?")
@@ -106,40 +106,32 @@ function getPasswordOptions() {
     return;
   }
   // Variable to store boolean regarding the inclusion of special characters
-  var hasSpecialCharacters = confirm(
-    "Click OK to confirm including special characters."
-  );
+  var hasSpecial = confirm("Click OK to confirm including special characters.");
   // Variable to store boolean regarding the inclusion of numeric characters
-  var hasNumericCharacters = confirm(
-    "Click OK to confirm including numeric characters."
-  );
+  var hasNumeric = confirm("Click OK to confirm including numeric characters.");
   // Variable to store boolean regarding the inclusion of lowercase characters
-  var hasLowerCasedCharacters = confirm(
-    "Click OK to confirm including lowercase characters."
-  );
+  var hasLower = confirm("Click OK to confirm including lowercase characters.");
   // Variable to store boolean regarding the inclusion of uppercase characters
-  var hasUpperCasedCharacters = confirm(
-    "Click OK to confirm including uppercase characters."
-  );
+  varhasUpper = confirm("Click OK to confirm including uppercase characters.");
   // Conditional statement to check if user does not include any types of characters. Password generator ends if all four variables evaluate to false
   if (
-    hasSpecialCharacters === false &&
-    hasNumericCharacters === false &&
-    hasLowerCasedCharacters === false &&
-    hasUpperCasedCharacters === false
+    hasSpecial === false &&
+    hasNumeric === false &&
+    hasLower === false &&
+    hasUpper === false
   ) {
     alert("Must select at least one character type");
     return;
   }
   // Object to store user input
-  var passwordOptions = {
+  var password = {
     length,
-    hasSpecialCharacters,
-    hasNumericCharacters,
-    hasLowerCasedCharacters,
-    hasUpperCasedCharacters,
+    hasSpecial,
+    hasNumeric,
+    hasLower,
+    hasUpper,
   };
-  return passwordOptions;
+  return password;
 }
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -170,7 +162,7 @@ function generatePassword() {
   }
   // Conditional statement that adds array of lowercase characters into array of possible characters based on user input
   // Push new random lower-cased character to guaranteedCharacters
-  if (options.hasLowerCasedCharacters) {
+  if (options.hasLower) {
     possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
     guaranteedCharacters.push(getRandom(lowerCasedCharacters));
   }
