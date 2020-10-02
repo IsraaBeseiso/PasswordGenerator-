@@ -134,7 +134,7 @@ function passwordOptions() {
   return password;
 }
 // Function for getting a random element from an array
-function getRandom(arr) {
+function randomizer(arr) {
   var randIndex = Math.floor(Math.random() * arr.length);
   var randElement = arr[randIndex];
   return randElement;
@@ -152,29 +152,29 @@ function generatePassword() {
   // Push new random special character to guaranteedCharacters
   if (options.hasSpecialCharacters) {
     possibleCharacters = possibleCharacters.concat(specialCharacters);
-    guaranteedCharacters.push(getRandom(specialCharacters));
+    guaranteedCharacters.push(randomizer(specialCharacters));
   }
   // Conditional statement that adds array of numeric characters into array of possible characters based on user input
   // Push new random special character to guaranteedCharacters
   if (options.hasNumericCharacters) {
     possibleCharacters = possibleCharacters.concat(numericCharacters);
-    guaranteedCharacters.push(getRandom(numericCharacters));
+    guaranteedCharacters.push(randomizer(numericCharacters));
   }
   // Conditional statement that adds array of lowercase characters into array of possible characters based on user input
   // Push new random lower-cased character to guaranteedCharacters
   if (options.hasLower) {
     possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
-    guaranteedCharacters.push(getRandom(lowerCasedCharacters));
+    guaranteedCharacters.push(randomizer(lowerCasedCharacters));
   }
   // Conditional statement that adds array of uppercase characters into array of possible characters based on user input
   // Push new random upper-cased character to guaranteedCharacters
   if (options.hasUpperCasedCharacters) {
     possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
-    guaranteedCharacters.push(getRandom(upperCasedCharacters));
+    guaranteedCharacters.push(randomizer(upperCasedCharacters));
   }
   // For loop to iterate over the password length from the options object, selecting random indices from the array of possible characters and concatenating those characters into the result variable
   for (var i = 0; i < options.length; i++) {
-    var possibleCharacter = getRandom(possibleCharacters);
+    var possibleCharacter = randomizer(possibleCharacters);
     result += possibleCharacter;
     // result.push(possibleCharacter);
   }
