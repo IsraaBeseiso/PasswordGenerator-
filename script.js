@@ -112,7 +112,7 @@ function passwordOptions() {
   // Variable to store boolean regarding the inclusion of lowercase characters
   var hasLower = confirm("Click OK to confirm including lowercase characters.");
   // Variable to store boolean regarding the inclusion of uppercase characters
-  varhasUpper = confirm("Click OK to confirm including uppercase characters.");
+  var hasUpper = confirm("Click OK to confirm including uppercase characters.");
   // Conditional statement to check if user does not include any types of characters. Password generator ends if all four variables evaluate to false
   if (
     hasSpecial === false &&
@@ -141,13 +141,13 @@ function randomizer(arr) {
 }
 // Function to generate password with user input
 function generatePassword() {
-  var options = getPasswordOptions();
+  var options = passwordOptions();
   // Variable to store password as it's being concatenated
-  var password = "";
+  var password = [];
   // Array to store types of characters to include in password
   var possible = [];
   // Array to contain one of each type of chosen character to ensure each will be used
-  var guarantee = [];
+  var guaranteed = [];
   // Conditional statement that adds array of special characters into array of possible characters based on user input
   // Push new random special character to guaranteedCharacters
   if (options.hasSpecial) {
@@ -157,8 +157,8 @@ function generatePassword() {
   // Conditional statement that adds array of numeric characters into array of possible characters based on user input
   // Push new random special character to guaranteedCharacters
   if (options.hasNumeric) {
-    possibleCharacters = possibleCharacters.concat(numeric);
-    guaranteedCharacters.push(randomizer(numeric));
+    possible = possible.concat(numeric);
+    guaranteed.push(randomizer(numeric));
   }
   // Conditional statement that adds array of lowercase characters into array of possible characters based on user input
   // Push new random lower-cased character to guaranteedCharacters
@@ -174,16 +174,16 @@ function generatePassword() {
   }
   // For loop to iterate over the password length from the options object, selecting random indices from the array of possible characters and concatenating those characters into the password variable
   for (var i = 0; i < options.length; i++) {
-    var possible = randomizer(possible);
-    password += possible;
-    // password.push(possibleCharacter);
+    var characters = randomizer(possible);
+    // password += possible;
+    password.push(characters);
   }
   // Mix in at least one of each guaranteed character in the password
   for (var i = 0; i < guaranteed.length; i++) {
     password[i] = guaranteed[i];
   }
   // Transform the password into a string and pass into writePassword
-  return password;
+  return password.join("");
   // password = ['a', 'B', '1', '?'].join('') 'aB1?'
 }
 //** this is what you get from your develop folder */
